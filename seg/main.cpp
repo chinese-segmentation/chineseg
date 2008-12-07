@@ -12,5 +12,7 @@ int main()
 	test_load_from_txt();
 	test_sentence_analyser();*/
 
-	test_all();
+	//test_all();
+
+	test_paragraph();
 }

@@ -5,6 +5,7 @@
 #include "test_Sentence.h"
 #include "test_Dictionary.h"
 #include "test_SentenceAnalyser.h"
+#include "test_Paragraph.h"
 
 void test_all();
 
