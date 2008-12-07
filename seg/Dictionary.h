@@ -77,19 +77,21 @@ private:
 	void expand();
 	int get_total_line(FILE* pFile);
 	
+
 	void write_as_txt(FILE * file, int i, char * buf);
 	void reset_initial();
 
 	//a primary implementation for find_entrance
 	int32 find_entrance_common_impl(word w);
 public:
+	
 	//TODO: these method should me remove to factory class
 	void load_from_txt(const char * file);
 	void load_from_bin(const char * file);
 	void save_as_txt(const char * file);
 	void save_as_bin(const char * file);
 	
-	
+	//********** method for search *********//
 	bool search(word key);
 	bool search(const char * str);
 	bool search(word * words, int width);
