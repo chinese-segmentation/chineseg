@@ -156,6 +156,7 @@ void Dictionary::save_as_txt(const char* file )
 
 void Dictionary::save_as_bin(const char * file)
 { 
+	// format:
 	// cur_pos: 32
 	// total_prefix: 32
 	
@@ -171,7 +172,6 @@ void Dictionary::save_as_bin(const char * file)
 	fwrite(&this->cur_pos,sizeof(int32),1, out);
 	fwrite(&this->total_prefix,sizeof(int32),1,out);
 
-	printf("\n Size of Struct: %d, Number: %d", sizeof(struct Node),cur_pos);
 	for(int i  = 0; i < this->cur_pos; ++i)
 	{
 		fwrite(&this->allNodes[i],sizeof(struct Node),1,out);
