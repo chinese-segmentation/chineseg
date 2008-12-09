@@ -23,17 +23,30 @@ bool Paragraph::has_more()
 	if(!more) return false;
 
 	word w;
+	do
+	{ 
+		w=next();
+	}while(w==STOP);
+	//if( w == END_OF_FILE) 
 
 	sent = new Sentence();
+	//sent->add(w);
+
 	do{
-		w = next();
+		//w = next();
 		if( w == END_OF_FILE) 
 		{
 			more=false;
 			break;
 		}
-		if( w == STOP) break;
-		else sent->add(w);
+		else if( w == STOP) 
+		{
+			break;
+		}
+		else {
+			sent->add(w);
+			w = next();
+		}
 	}while(true);
 	
 	return true;
@@ -46,28 +59,27 @@ Sentence *Paragraph::next_sentence()
 
 
 
-// this implmentation assume that source file is 
-// GB2312 Encoding.
+// this implmentation assumes that source is 
+// totally GB2312 Encoded except NEXT_LINE with value 10
+// and END_OF_FILE with value 0.
 word Paragraph::next()
 {
 	char temp[2];
-
 	temp[0] = nextchar();
 
 	// come across the end of file
-	if(temp[0] == '\0')	return (word)END_OF_FILE;
 	
+	if(temp[0] == END_OF_FILE)	return (word)END_OF_FILE;
+	else if(temp[0] == NEXT_LINE) temp[0] = nextchar();
 	
 	unsigned char c = (unsigned char)temp[0];
-	//come across a sign
+	//come across a non-chinese-character
 	if( !( c>= HIGH_DOWN && c<= HIGH_UP)) 
 	{
+		//just consume next char	
+		nextchar();
 		
-		if(temp[0]>0 && temp[0]<127) 
-		{
-			return next();
-		}
-		
+		//return next word recursively.
 		return (word)STOP;
 	}
 	// return a chinese character.
