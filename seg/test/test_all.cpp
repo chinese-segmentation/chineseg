@@ -7,4 +7,5 @@ void test_all()
 	test_dictionary();
 	test_sentence_analyser();
 	test_paragraph();
+	test_paragraph_analyser();
 }

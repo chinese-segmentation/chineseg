@@ -18,5 +18,4 @@ void test_sentence_analyser()
 	analyser.analysis(sent1);
 	analyser.analysis(sent2);
 	//rdict.load_from_txt(rdictFile);
-	
 }
