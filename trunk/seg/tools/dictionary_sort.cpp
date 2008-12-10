@@ -13,7 +13,8 @@ enum Result
 	Larger = 1
 };
 
-// We assume that th
+// Buffer size.
+//We assume that a phrase has no more than 15 words.
 const int CHARS_SIZE = 32;
 
 Result compare(const char* c1, const char* c2);
@@ -124,8 +125,10 @@ void exchange( char* &a, char* &b)
 int partitial(char** all_line, int begin, int end)
 {
 	//printf("\nPartition %d -> %d", begin, end);
-	// random partitial
-	if(begin != end)
+	
+	// random partitial for randomized quick sort
+	// do exchange when the branch has more than 5 elements.
+	if(begin != end && begin-end>=5)
 	{
 		int r = (rand()<<3) % (end-begin) + begin;
 		exchange(all_line[r],all_line[end]);
@@ -150,6 +153,7 @@ int partitial(char** all_line, int begin, int end)
 	return i;
 }
 
+// a ramdomized quick sort implementation
 void quick_sort(char** all_line, int begin, int end)
 {
 	if( begin < end ) {
@@ -161,6 +165,7 @@ void quick_sort(char** all_line, int begin, int end)
 	}
 }
 
+// dictionary comparison
 Result compare(const char* arr1, const char* arr2)
 {
 	int f = strlen(arr1);

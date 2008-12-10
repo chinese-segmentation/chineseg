@@ -12,6 +12,7 @@ word TwoCharsToWord(char  chars[]);
 
 /**
  * convert a word into two chars
+ * user should delete the return result.
  */
 char* WordToTwoChars(word w);
 

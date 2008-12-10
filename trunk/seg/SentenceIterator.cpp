@@ -51,5 +51,5 @@ void ReserveIterator::reset()
 
 void ReserveIterator::push_back()
 {
-	if( cur != size) --cur;
+	if( cur != size) ++cur;
 }
