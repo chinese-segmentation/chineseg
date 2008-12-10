@@ -9,8 +9,9 @@ typedef int16 LABEL_SIZE;
 typedef int32 label_f;
 
 
-extern int found;		// number of words have been found
-extern int location;	// location of last word found
+extern int found_length;		// number of words have been found
+extern int last_location_length; // final location that can be a phrase
+extern int location; // final location that can be a phrase
 
 int have_found();
 int last_location();
@@ -80,7 +81,7 @@ private:
 
 	void write_as_txt(FILE * file, int i, char * buf);
 	void reset_initial();
-
+	
 	//a primary implementation for find_entrance
 	int32 find_entrance_common_impl(word w);
 public:

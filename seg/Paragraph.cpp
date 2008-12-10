@@ -65,12 +65,13 @@ Sentence *Paragraph::next_sentence()
 word Paragraph::next()
 {
 	char temp[2];
-	temp[0] = nextchar();
+
+	do{
+		temp[0] = nextchar();
+	}while(temp[0] == NEXT_LINE);
 
 	// come across the end of file
-	
 	if(temp[0] == END_OF_FILE)	return (word)END_OF_FILE;
-	else if(temp[0] == NEXT_LINE) temp[0] = nextchar();
 	
 	unsigned char c = (unsigned char)temp[0];
 	//come across a non-chinese-character

@@ -1,8 +1,10 @@
 
 #include "Dictionary.h"
 
-int found;		// number of words have been found
+int found_length;		// number of words have been found
+int last_location_length; // final location that can be a phrase
 int location;	// location of last word found
+
 
 
 //  *********** construction & deconstruction **************//
@@ -18,6 +20,7 @@ Dictionary::~Dictionary()
 {
 	delete [] allNodes;
 }
+
 
 // *********** public function **************//
 void Dictionary::load_from_txt(const char * file)
@@ -90,7 +93,6 @@ void Dictionary::load_from_txt(const char * file)
 			{
 				cur[strlen(cur)-1] = '\0';
 				cur_word = word_at(cur,column);
-
 				// current word has same prefix with previous word
 				if(is_same_prefix[line])
 				{			
@@ -241,6 +243,12 @@ bool Dictionary::search(word key)
 	{
 		if(allNodes[first_location+i].data == key)
 		{
+			++found_length;
+			if(allNodes[first_location+i].is_word)
+			{
+				last_location_length = found_length;
+			}
+
 			location = first_location+i;
 			return true;
 		}
@@ -248,6 +256,7 @@ bool Dictionary::search(word key)
 	return false;
 }
 
+// Error With this method.
 bool Dictionary::search(word * words, int words_size)
 {
 	if(words == NULL || words_size <= 0 ) return false;
@@ -258,7 +267,7 @@ bool Dictionary::search(word * words, int words_size)
 	if( first_word == NO_FIRST_WORD) return false;
 
 	// initial global variable
-	found = 1; 
+	found_length = 1; 
 	location = first_word;
 
 	int32 next_location = allNodes[first_word].first;
@@ -280,7 +289,7 @@ bool Dictionary::search(word * words, int words_size)
 			if( allNodes[cur_location].data == w) 
 			{
 				// revise global variable
-				++found; 
+				++found_length; 
 				location = cur_location;
 				
 				next_location = allNodes[cur_location].first;
@@ -330,6 +339,8 @@ int32 Dictionary::find_entrance_common_impl(word w)
 	{
 		if( allNodes[i].data == w)
 		{
+			last_location_length=0;
+			found_length = 0;
 			location = i;
 			return i;
 		}
@@ -437,6 +448,6 @@ int Dictionary::get_total_line(FILE* pFile)
 
 void Dictionary::reset_initial()
 {
-	found=location=INITIAL_VALUE;
+	location=found_length=last_location_length=INITIAL_VALUE;
 }
 
