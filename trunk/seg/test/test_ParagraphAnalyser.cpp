@@ -10,6 +10,7 @@ void test_paragraph_analyser()
 
 	Dictionary fdict;
 	fdict.load_from_txt(TXT_FMM_DICT);
+	
 	Dictionary rdict;
 	rdict.load_from_txt(TXT_RMM_DICT);
 	
