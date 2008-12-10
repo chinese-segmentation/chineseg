@@ -56,13 +56,15 @@ void test_all_dict(Dictionary &dd, char * dict)
 }
 void test_dictionary()
 {
-	char file[] = "C:\\dict_final.txt";
-	Dictionary dd;
-	dd.load_from_txt(file);
-	test_all_dict(dd,file);
+	printf("\n\nStart test_dictionary()");
 
-	char bin[] = "C:\\dictionary.dat";
-	Dictionary ddd;
-	ddd.load_from_bin(bin);
-	test_all_dict(ddd, file);
+	Dictionary txt_fmm_dict;
+	txt_fmm_dict.load_from_txt(TXT_FMM_DICT);
+	test_all_dict(txt_fmm_dict,TXT_FMM_DICT);
+
+	Dictionary bin_fmm_dict;
+	bin_fmm_dict.load_from_bin(BIN_FMM_DICT);
+	test_all_dict(bin_fmm_dict, TXT_FMM_DICT);
+
+	printf("\nFinish");
 }
