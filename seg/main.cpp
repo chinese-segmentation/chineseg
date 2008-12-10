@@ -14,5 +14,6 @@ int main()
 
 	//test_all();
 
-	test_paragraph();
+	//test_paragraph();
+	test_paragraph_analyser();
 }

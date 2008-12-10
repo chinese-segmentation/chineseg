@@ -1,6 +1,6 @@
 
 #ifndef __PARAGRAPH_H
-#define __PRRAGRAPH_H
+#define __PARAGRAPH_H
 
 #include "common.h"
 #include "Sentence.h"

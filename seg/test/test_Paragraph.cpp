@@ -2,15 +2,16 @@
 #include "test_Paragraph.h"
 #include "../common.h"
 
+char * INPUT = "./test_data/paragraph_test.txt";
+char * OUTPUT = "./test_data/paragraph_output.txt";
 void test_paragraph()
 {
-	char path[]="C:\\paragraph_test.txt";
-	char out[] ="C:\\paragraph_out.txt";
-	FILE* file = fopen(out,"w");
-	Paragraph p(path);
-	
-	Sentence *sent = NULL;
+	printf("\nStart test Paragraph");
 
+	FILE* file = fopen(OUTPUT,"w");
+	Paragraph p(INPUT);
+	Sentence *sent = NULL;
+	
 	while(p.has_more())
 	{
 		sent = p.next_sentence();
@@ -21,6 +22,6 @@ void test_paragraph()
 		delete [] str;
 		delete sent;
 	}
-
 	fclose(file);
+	printf("\nFinish");
 }

@@ -2,6 +2,8 @@
 
 void test_sentence()
 {
+	printf("\nStart test_sentence:\n");
+
 	char *src = "这个是测试句子";
 	int length = strlen(src)/2;
 	word * result = CharsToWords(src);
@@ -34,10 +36,7 @@ void test_sentence()
 		printf("%d:%s\t",cur,WordToTwoChars(cur));
 	}
 	delete [] re_it;
+	printf("\nOriginal Sentence is: %s\n", sent.to_string());
 
-	printf("\n");
-
-
-
-	printf("Original Sentence is: %s\n", sent.to_string());
+	printf("\nFinish.");
 }

@@ -192,7 +192,7 @@ void Dictionary::load_from_bin(const char * file)
 	delete [] allNodes;
 	allNodes = new Node[this->size];
 
-	printf("\n Size of Struct: %d, Number: %d", sizeof(struct Node),cur_pos);
+	//printf("\n Size of Struct: %d, Number: %d", sizeof(struct Node),cur_pos);
 	for( int i = 0 ; i < this->cur_pos; ++i)
 	{
 		fread(&this->allNodes[i],sizeof(struct Node),1,in);
