@@ -56,15 +56,23 @@ void test_all_dict(Dictionary &dd, char * dict)
 }
 void test_dictionary()
 {
-	printf("\n\nStart test_dictionary()");
+	printf("\n\nStart test Dictionary");
 
-	Dictionary txt_fmm_dict;
-	txt_fmm_dict.load_from_txt(TXT_FMM_DICT);
-	test_all_dict(txt_fmm_dict,TXT_FMM_DICT);
+	//Dictionary txt_fmm_dict;
+	//txt_fmm_dict.load_from_txt(TXT_FMM_DICT);
+	//test_all_dict(txt_fmm_dict,TXT_FMM_DICT);
 
-	Dictionary bin_fmm_dict;
+	Dictionary txt_rmm_dict;
+	txt_rmm_dict.load_from_txt(TXT_RMM_DICT);
+	txt_rmm_dict.save_as_txt("./test_data/sava_as_txt.txt");
+	
+	test_all_dict(txt_rmm_dict,TXT_RMM_DICT);
+    
+	//test_search(txt_rmm_dict);
+
+	/*Dictionary bin_fmm_dict;
 	bin_fmm_dict.load_from_bin(BIN_FMM_DICT);
-	test_all_dict(bin_fmm_dict, TXT_FMM_DICT);
+	test_all_dict(bin_fmm_dict, TXT_FMM_DICT);*/
 
-	printf("\nFinish");
+	printf("\nFinish.");
 }
