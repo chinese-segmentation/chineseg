@@ -6,9 +6,6 @@
 #include <string.h>
 #include <time.h>
 
-// We assume that th
-const int CHARS_SIZE = 32;
-
 enum Result
 {
 	Smaller = -1,
@@ -16,6 +13,8 @@ enum Result
 	Larger = 1
 };
 
+// We assume that th
+const int CHARS_SIZE = 32;
 
 Result compare(const char* c1, const char* c2);
 int partitial(char** all_line, int begin, int end);
@@ -97,7 +96,7 @@ void sort_dictionary(const char * file_path, bool reserved)
 	fputs(all_lines[0], output);
 	for(int i=1; i < line; ++i)
 	{
-		if(compare(all_lines[i-1],all_lines[i]) == Result::Equal)
+		if(compare(all_lines[i-1],all_lines[i]) == Equal)
 		{
 			++j;
 			fputs(all_lines[i],removed);	
@@ -138,7 +137,7 @@ int partitial(char** all_line, int begin, int end)
 	for( j = begin; j < end; ++j)
 	{
 		Result result = compare(all_line[j],x);
-		if( result == Result::Smaller || result == Result::Equal)
+		if( result == Smaller || result ==Equal)
 		{
 			++i;
 			exchange(all_line[j],all_line[i]);
@@ -173,15 +172,15 @@ Result compare(const char* arr1, const char* arr2)
 		unsigned char c1 = arr1[i];
 		unsigned char c2 = arr2[i];
 
-		if( c1 < c2) return Result::Smaller;
-		if ( c1 > c2) return Result::Larger;
+		if( c1 < c2) return Smaller;
+		if ( c1 > c2) return Larger;
 		
 		continue;
 	}
 
-	if( f == s) return Result::Equal;
-	if( f < s) return Result::Smaller;
-	if( f > s) return Result::Larger;
+	if( f == s) return Equal;
+	if( f < s) return Smaller;
+	if( f > s) return Larger;
 }
 
 
