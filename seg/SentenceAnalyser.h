@@ -30,6 +30,8 @@ public:
 	
 	void fmm_analysis(Sentence &sent);
 	void rmm_analysis(Sentence &sent);
+
+	void analysis(wchar_t *sent, int length);
 };
 
 
